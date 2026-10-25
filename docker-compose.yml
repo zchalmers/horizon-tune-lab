@@ -1,0 +1,28 @@
+# Local development compose.
+services:
+  horizon-tune-lab:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: horizon-tune-lab:local
+    ports:
+      - "127.0.0.1:3066:8080"
+    volumes:
+      - ${FORZA_DB_PATH:-./sample-data/forza_tuning_sample.db}:/data/forza_tuning.db:ro
+    environment:
+      FORZA_DB_PATH: /data/forza_tuning.db
+      STATIC_DIR: /app/static
+    tmpfs:
+      - /tmp:size=16m,mode=1777
+    read_only: true
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python3", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8080/api/health')"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s

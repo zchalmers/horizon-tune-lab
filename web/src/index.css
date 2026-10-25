@@ -1,0 +1,87 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #26231f;
+  background: #f6f1e9;
+  font-feature-settings: "cv02", "cv03", "cv04";
+  --ink: #26231f;
+  --ink-soft: #5f584f;
+  --muted: #8a8175;
+  --paper: #fbf7f0;
+  --paper-warm: #f6f1e9;
+  --surface: #fffdf8;
+  --line: #e7dccd;
+  --line-strong: #d4c5b3;
+  --accent: #8f4b2f;
+  --accent-soft: #f3dfd2;
+  --accent-dark: #62321f;
+}
+
+* { box-sizing: border-box; }
+
+html { background: var(--paper-warm); }
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 18% -10%, rgba(143, 75, 47, 0.12), transparent 28rem),
+    radial-gradient(circle at 88% 8%, rgba(70, 98, 130, 0.09), transparent 30rem),
+    linear-gradient(180deg, #fbf7f0 0%, #f6f1e9 58%, #efe6d9 100%);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: geometricPrecision;
+}
+
+button, input, select, textarea { font: inherit; }
+button { cursor: pointer; }
+button:disabled { cursor: not-allowed; }
+::selection { background: rgba(143, 75, 47, 0.22); }
+
+@layer components {
+  .lab-shell { @apply min-h-screen text-stone-950; }
+
+  .lab-container { @apply mx-auto w-full max-w-4xl px-4 sm:px-6 lg:px-8; }
+
+  .lab-card {
+    @apply rounded-[28px] border border-stone-200/90;
+    background: rgba(255, 253, 248, 0.92);
+    box-shadow: 0 20px 60px rgba(64,48,35,0.09);
+  }
+
+  .lab-card-soft {
+    @apply rounded-[24px] border border-stone-200/80 bg-white/55 shadow-[0_12px_42px_rgba(64,48,35,0.06)];
+  }
+
+  .lab-label {
+    @apply text-[11px] font-semibold uppercase tracking-[0.15em] text-stone-500;
+  }
+
+  .lab-input {
+    @apply w-full rounded-2xl border border-stone-200 bg-white/85 px-3.5 py-3 text-sm text-stone-950 placeholder:text-stone-400 outline-none transition focus:border-amber-700/50 focus:bg-white focus:ring-4 focus:ring-amber-800/10;
+  }
+
+  .lab-button-primary {
+    @apply inline-flex items-center justify-center rounded-full px-5 py-3 text-sm font-semibold text-white transition disabled:bg-stone-300 disabled:text-stone-500 disabled:shadow-none;
+    background: #8f4b2f;
+    box-shadow: 0 10px 24px rgba(143,75,47,0.22);
+  }
+
+  .lab-button-primary:hover:not(:disabled) { background: #733b25; }
+
+  .lab-button-secondary {
+    @apply inline-flex items-center justify-center rounded-full border border-stone-200 bg-white/70 px-4 py-2.5 text-sm font-semibold text-stone-700 transition hover:border-stone-300 hover:bg-white;
+  }
+
+  .lab-chip {
+    @apply inline-flex items-center rounded-full border border-stone-200 bg-white/65 px-3 py-1.5 text-xs font-medium text-stone-600;
+  }
+
+  .lab-mono {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  }
+}

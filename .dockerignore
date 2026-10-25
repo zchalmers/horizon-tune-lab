@@ -1,0 +1,26 @@
+# Python
+api/.venv
+api/__pycache__
+api/**/__pycache__
+api/**/*.pyc
+api/.pytest_cache
+api/.ruff_cache
+api/tests
+
+# Node
+web/node_modules
+web/dist
+
+# Dev artifacts
+*.env
+*.env.*
+.git
+.gitignore
+claude-prompts/
+docs/
+
+# Credentials / secrets
+*.key
+*.pem
+*.p12
+*.crt
